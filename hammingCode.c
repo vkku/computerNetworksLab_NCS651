@@ -211,6 +211,12 @@ int main()
          printf("\nONLY FOLLOWING OPTIONS ACCESSIBLE\n0  :   CONTINUE EXECUTION\n1  :   TERMINATE PROGRAM\n");
          fflush(stdin);
         }
+        //flush for next iteration
+        bit = 0;
+        dupe = 0;
+        count = 0;
+        yalc = 0;
+        
     }while(ch != 1);
     getch();
     return 0;
