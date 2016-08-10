@@ -216,8 +216,7 @@ int main()
         dupe = 0;
         count = 0;
         yalc = 0;
-        
+
     }while(ch != 1);
-    getch();
     return 0;
 }
