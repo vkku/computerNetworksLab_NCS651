@@ -33,13 +33,7 @@ int main()
         //printf("Proceed");
         while(dupe > 0.7)
         {
-            //int temp;
-            //printf("\nDivision : %lf\n",fmod(dupe, 10.0));
-            //printf("\nConverted to int : %d\n",(int)fmod(dupe, 10.0));
-            //temp = (int)fmod(dupe, 10.0);
             pattern[count++] = (int)fmod(dupe, 10.0);
-            //printf("\nCount : %d\n",count);
-            //printf("\nEntered : %d\n",pattern[count-1]);
             dupe /= 10.0;
         }
         if(jz == 1)
@@ -48,52 +42,10 @@ int main()
                 pattern[count++] = 0;
         }
 
-        /*
-        printf("\nReversed : \n");
-        for(iter = 0 ; iter < count ; iter++)   //Print pattern the reverse array
-        {
-            printf("%3d",pattern[iter]);
-        }
-        */
-
-        /*
-        printf("\nReversed : \n");
-        for(dupe = 0 ; dupe < count ; dupe++)
-                printf("%3d",pattern[dupe]);
-        */
-        /* NO REVERSE NEEDED
-        //Set the pointers
-        first = pattern;
-        last = pattern + count - 1;
-        //Reversing array
-        while(last > first)
-        {
-            //printf("\nInside");
-            int temp;
-            temp = *first;
-            *first = *last;
-            *last = temp;
-            first++;
-            last--;
-        }
-        */
-        /*
-        printf("\nAgain Reversed : \n");
-        for(iter = 0 ; iter < count ; iter++)
-                printf("%3d",pattern[iter]);
-        */
-        /*
-        //0101-Reversing must be remembered
-        count = 4;
-        pattern[0] = 1;
-        pattern[1] = 0;
-        pattern[2] = 1;
-        pattern[3] = 0;
-        */
+        
         while(  ( pow(2, red) < count + red + 1  )    &&   ( pow(2, red) != count + red + 1  ) )
         {
             red++;
-            //printf("\nIntel\tred : %d",red);
         }
         printf("\nWord Size : %d\n",count);
         printf("\nRedundant Bits : %d\n",red);
@@ -109,8 +61,7 @@ int main()
 
         while(iter < count + red)
         {
-            //printf("\nIntel\titer : %d\n",iter);
-            //It is parity position ?
+            //Is it parity position ?
             if( ( pow(2, parity + 1) - (iter + 1) )  < 0.00001 )
             {
                 //printf("\nParity : %d\n",parity);
@@ -120,10 +71,7 @@ int main()
             }
             else
             {
-                //printf("\nfwd : %d\n",fwd);
-
                 ham[iter++] = pattern[fwd++];
-                //fwd++;
             }
         }
         printf("\n\nTotal Bits : %d\n",count + red);
@@ -132,6 +80,7 @@ int main()
             printf("%3d",save[iter] + 1);   //casted according to real world
         printf("\n");   //pretty output
         /*
+        Driver for individual testing [Uncomment if testing parity 0 explicitly]
             printf("\nHamming Code : [Parity bit represented as 0]\n");
         for(iter = 0 ; iter < count + red; iter++)
                 printf("%3d",ham[iter]);
@@ -155,35 +104,14 @@ int main()
             while(temp < count + red)
             {
                 ham[save[iter]] ^= ham[temp++];
-                //printf("\nBit Taken : %d\n",ham[temp - 1]);
                 repeat++;
-                //printf("\nRepeat++\n");
                 if(repeat == save[iter] + 1)    //For taking and leaving bits
                 {
                     temp += save[iter] + 1;  //To reach to correct position after leaving defined bits
                     repeat = 0;
                 }
             }
-            //printf("\niter = %d\nham[save[iter]] : %d\n",iter,ham[save[iter]]);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        printf("\nHamming Code : \n");
-        for(iter = 0 ; iter < count + red; iter++)
-                printf("%3d",ham[iter]);
-        */
-
 
         //Reverse to display correctly
         //Set the pointers
@@ -192,7 +120,6 @@ int main()
         //Reversing array
         while(last > first)
         {
-            //printf("\nInside");
             int temp;
             temp = *first;
             *first = *last;
